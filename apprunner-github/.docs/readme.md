@@ -1,9 +1,18 @@
-Para rodar basta alterar as variáveis no arquivo `terraform.tfvars` e executar os comandos:
+Inicie settando o profile da AWS caso não tenho o default definido:
 
 ```bash
-terraform init
-terraform plan
-terraform apply
+export AWS_PROFILE=digiall
+```
+
+Após isso garanta que você tem o bucket **apprunner-digiall-site** criado na região de criação do App Runner.
+
+Para criar o App Runner basta alterar as variáveis no arquivo `production/terraform.tfvars` ou `develop/terraform.tfvars` e executar os comandos:
+
+```bash
+terraform init -backend-config="production/backend.tfbackend"
+terraform validate
+terraform plan -var-file="production/terraform.tfvars"  
+terraform aply -var-file="production/terraform.tfvars"  
 ```
 
 ## Observação Importante
