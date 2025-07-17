@@ -13,14 +13,10 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "this" {
-  bucket = "my-tf-example-bucket-${random_id.this.hex}"
+  bucket = "apprunner-digiall-site"
 
   tags = {
-    Name        = "My bucket"
+    Name        = "terraform"
     Environment = "Dev"
   }
-}
-
-resource "random_id" "this" {
-  byte_length = 8
 }
